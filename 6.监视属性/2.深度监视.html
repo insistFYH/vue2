@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div class="root">
+        <span>{{numbers.a}}</span>
+        <button @click="numbers.a++">a++</button>
+        <button @click="numbers={a:2,b:3}">更换numbers</button>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el: '.root',
+            data: {
+                numbers: {
+                    a: 1,
+                    b: {
+                        c: 2,
+                        d: {
+                            e: 3
+                        }
+                    }
+                }
+            },
+            watch: {
+                'numbers.a': {
+                    handler() {
+                        console.log('numbers中a值被改变了')
+                    }
+                },
+                numbers: {
+                    deep: true,
+                    handler() {
+                        console.log('numbers被替换了')
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

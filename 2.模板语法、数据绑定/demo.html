@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法+数据绑定</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div class="root">
+        <h1>插值语法：{{name.toUpperCase()}}</h1>
+        <hr>
+        <h1>指令语法</h1>
+        <!-- 单向绑定 -->
+        <a v-bind:href="address.href">点我跳转到地址</a>
+        <a :href="address.href">点我跳转到地址</a>
+        <!-- 双向绑定 -->
+        <input type="text" v-model:value="address.name">
+        <input type="text" v-model="address.name">
+
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el: ".root",
+            data: {
+                name: "jack",
+                address: {
+                    name: "东莞市东城",
+                    href: "https://cn.vuejs.org/"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

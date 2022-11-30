@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .demo {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root">
+        <a href="http://www.baidu.com" @click.prevent="showInfo">prevent使用，跳转到百度搜索页</a>
+        <div class="demo" @click="showMsg">
+            <button @click.stop="showMsg">stop使用，点我弹窗：你好</button>
+        </div>
+        <button @click.once="showMsg">once使用</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el: '.root',
+            methods: {
+                showInfo() {
+                    console.log("666")
+                },
+                showMsg() {
+                    alert("你好啊！")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

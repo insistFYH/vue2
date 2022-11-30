@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div class="root">
+        <h1>事件的基本使用</h1>
+        <button v-on:click="showInfo">on不传参使用{{name}}</button>
+        <button @click="showInfo">on简写不传参使用</button>
+        <button @click="showInfo2($event,666)">on简写传参使用</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el: '.root',
+            data: {
+                name: 'jack'
+            },
+            methods: {
+                showInfo() {
+                    console.log("1")
+                },
+                showInfo2(event, value) {
+                    console.log(event.target.innerText)
+                    console.log(value)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

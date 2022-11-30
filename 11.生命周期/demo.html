@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div class="root">
+        <h2 :style="{opacity}">{{info}}</h2>
+        <button @click="stop">点我停止</button>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        new Vue({
+            el: '.root',
+            data: {
+                info: '循环渐淡',
+                opacity: 1
+            },
+            methods: {
+                stop() {
+                    this.$destroy()
+                }
+            },
+            mounted() {
+                this.timer = setInterval(change => {
+                    if (this.opacity <= 0) this.opacity = 1
+                    this.opacity -= 0.006
+                }, 0.03)
+            },
+            beforeDestroy() {
+                clearInterval(this.timer)
+            },
+
+        })
+    </script>
+</body>
+
+</html>
